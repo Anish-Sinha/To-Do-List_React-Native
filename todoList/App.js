@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Task from './components/Task';
 
 export default function App() {
     return (
@@ -12,6 +13,7 @@ export default function App() {
             {/*Task Items*/}
             <View style={styles.items}>
                 {/*This is where the indv tasks will go*/}
+                <Task />
             </View>
 
         </View>
