@@ -67,18 +67,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        //backgroundColor: '#121212',
+        backgroundColor:'rgba(18, 18, 18, 1)',
+        marginVertical: 0,
     },
     input: {
         paddingVertical: 15,
         paddingHorizontal: 15,
         backgroundColor: '#222222',
         borderRadius: 60,
-        width: 250,
+        borderColor: '#121212',
+        borderWidth: 2,
+        width: 280,
         color: 'white',
     },
     addWrapper: {
-        width: 60,
-        height: 60,
+        width: 55,
+        height: 55,
+        marginVertical: 5,
         backgroundColor: '#222222',
         borderRadius: 60,
         justifyContent: 'center',
@@ -86,5 +92,6 @@ const styles = StyleSheet.create({
     },
     addText: {
         color: '#7c7c7c',
+        fontSize: 30,
     }
 });
