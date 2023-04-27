@@ -29,7 +29,8 @@ export default function App() {
 
                 <TextInput style={styles.input} 
                     placeholder={'Write new task here'}
-                    placeholderTextColor="#7c7c7c"/>
+                    placeholderTextColor="#7c7c7c"
+                    keyboardAppearance='dark'/>
 
                 <TouchableOpacity>
                     <View style={styles.addWrapper}>
