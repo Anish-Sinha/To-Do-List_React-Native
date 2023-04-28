@@ -34,11 +34,19 @@ export default function App() {
                 {/*Task Items*/}
                 <View style={styles.items}>
                     {/*This is where the indv tasks will go*/}
-                    <Task text={'Task 1'}/>
+
+                    {/*.map calls callback function for each item in array*/}
+                    {
+                        taskItems.map((item, index) => {
+                            return <Task key={index} text={item}/>
+                        })
+                    }
+
+                    {/*<Task text={'Task 1'}/>
                     <Task text={'Task 2'}/>
                     <Task text={'Task 3'}/>
                     <Task text={'Task 4'}/>
-                    <Task text={'Task 5'}/>
+                    <Task text={'Task 5'}/>*/}
                 </View>
 
             </View>
