@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { 
-    StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity 
+    StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity,
+    Keyboard
 } from 'react-native';
 import Task from './components/Task';
 
@@ -20,8 +21,9 @@ export default function App() {
 
         //...taskItems takes everything that was taskItems array
         //then we create a new array where we append the new 'task' to the end
-        setTaskItems( [...taskItems, task] )
-        setTask(null);
+        setTaskItems( [...taskItems, task] );
+        setTask(null)
+        Keyboard.dismiss();
     }
 
     return (
