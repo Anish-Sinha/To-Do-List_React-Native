@@ -19,11 +19,24 @@ export default function App() {
     const handleAddTask = () => {
         console.log(task);
 
-        //...taskItems takes everything that was taskItems array
+        //...taskItems takes everything in taskItems array
         //then we create a new array where we append the new 'task' to the end
         setTaskItems( [...taskItems, task] );
         setTask(null)
         Keyboard.dismiss();
+    }
+
+    {/* function to delete specific task */}
+    const completeTask = (index) => {
+        //make local copy of taskItems[]
+        let taskItemsCopy = [...taskItems];
+
+        //remove the specific item using it's index
+        // splice (index of where to start deleting, how many items to delete)
+        taskItemsCopy.splice(index, 1)
+
+        //update taskItems state using setTaskItems function
+        setTaskItems( taskItemsCopy );
     }
 
     return (
@@ -40,7 +53,14 @@ export default function App() {
                     {/*.map calls callback function for each item in array*/}
                     {
                         taskItems.map((item, index) => {
-                            return <Task key={index} text={item}/>
+                            return (
+                                <TouchableOpacity 
+                                    key={index} 
+                                    onPress={() => completeTask(index)}>
+
+                                    <Task key={index} text={item}/>
+                                </TouchableOpacity>
+                            )
                         })
                     }
 
