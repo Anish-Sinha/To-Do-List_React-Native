@@ -8,10 +8,20 @@ import Task from './components/Task';
 export default function App() {
     {/* task - name of the state */}
     {/* setTask - function that will be used to save state */}
-    const [task, setTask] = useState();
+    const [ task, setTask ] = useState();
+
+    {/* taskItems - name of the state */}
+    {/* setTaskItems - function that will be used to save state */}
+    {/* useState([]) - declaring an array */} 
+    const [ taskItems, setTaskItems ] = useState([]);
 
     const handleAddTask = () => {
         console.log(task);
+
+        //...taskItems takes everything that was taskItems array
+        //then we create a new array where we append the new 'task' to the end
+        setTaskItems( [...taskItems, task] )
+        setTask(null);
     }
 
     return (
