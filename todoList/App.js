@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { 
     StyleSheet, View, ScrollView, SafeAreaView, Text, TextInput, 
-    TouchableOpacity, Keyboard, KeyboardAvoidingView, Vibration
+    TouchableOpacity, Keyboard, KeyboardAvoidingView, Vibration, Alert
 } from 'react-native';
 import Task from './components/Task';
 
@@ -40,9 +40,28 @@ export default function App() {
 
         //update taskItems state using setTaskItems function
         setTaskItems( taskItemsCopy );
+    }
+
+    const longPress = (index) => {
+        console.log("You long pressed: " + taskItems[index] + " at: " + index);
 
         //Vibrate phone
         Vibration.vibrate(100, false);
+
+        Alert.alert('Delete this task?', '"' + taskItems[index] + '"', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel button pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'Delete',
+                onPress: () => {
+                    console.log('Delete button pressed');
+                    completeTask(index)
+                },
+            }
+        ]);
     }
 
     return (
@@ -63,7 +82,7 @@ export default function App() {
                             return (
                                 <TouchableOpacity 
                                     key={index} 
-                                    onPress={() => completeTask(index)}>
+                                    onLongPress={() => longPress(index)}>
 
                                     <Task key={index} text={item}/>
                                 </TouchableOpacity>
