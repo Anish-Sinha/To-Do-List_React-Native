@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { 
-    StyleSheet, View, ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, 
-    Keyboard, KeyboardAvoidingView
+    StyleSheet, View, ScrollView, SafeAreaView, Text, TextInput, 
+    TouchableOpacity, Keyboard, KeyboardAvoidingView, Vibration
 } from 'react-native';
 import Task from './components/Task';
 
@@ -40,6 +40,9 @@ export default function App() {
 
         //update taskItems state using setTaskItems function
         setTaskItems( taskItemsCopy );
+
+        //Vibrate phone
+        Vibration.vibrate(100, false);
     }
 
     return (
@@ -47,7 +50,7 @@ export default function App() {
 
             {/*Today's Tasks*/}
             <ScrollView style={styles.tasksWrapper}>
-            <View style={{paddingBottom: 120}}>
+            <View style={{paddingBottom: 40}}>
                 <Text style={styles.sectionTitle}>Today's Tasks</Text>
 
                 {/*Task Items*/}
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingHorizontal: 20,
         paddingBottom: 100,
+        zIndex: 1,
     }, 
     sectionTitle: {
         color: 'white',
@@ -115,10 +119,9 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     writeTaskWrapper: {
-        position: 'absolute',
-        //bottom: 60,
-        bottom: 20,
-        height: 80,
+        //position: 'absolute',
+        //bottom: 40,
+        //paddingVertical: 10,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -126,6 +129,7 @@ const styles = StyleSheet.create({
         //backgroundColor: '#121212',
         backgroundColor:'rgba(18, 18, 18, 1)',
         marginVertical: 0,
+        zIndex: 1,
     },
     input: {
         paddingVertical: 15,
@@ -140,7 +144,7 @@ const styles = StyleSheet.create({
     addWrapper: {
         width: 55,
         height: 55,
-        marginVertical: 5,
+        marginVertical: 10,
         backgroundColor: '#222222',
         borderRadius: 60,
         justifyContent: 'center',
