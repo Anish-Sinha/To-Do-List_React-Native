@@ -1,15 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Task = (props) => {
+
+    {/* checkStatus: true - task completed; false - task incomplete */}
+    {/* updateCheckStatus: function to update task completion status */}
+    const [checkStatus, updateCheckStatus] = useState(false);
+
+    {/* function to toggle check mark on task */}
+    const toggleCheckTask = () => {
+        console.log("he touched the square: " + checkStatus);
+        checkStatus ? updateCheckStatus(false) : updateCheckStatus(true);
+        console.log("updated completion status: " + checkStatus);
+    }
 
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
                 {/*<TouchableOpacity style={styles.square}></TouchableOpacity>*/}
-                <View style={styles.square}>
-                   <Text style={styles.check}>✓</Text> 
-                </View>
+                <TouchableOpacity onPress={() => toggleCheckTask()}>
+                    <View style={styles.square}>
+                        { checkStatus && <Text style={styles.check}>✓</Text> }
+                    </View>
+                </TouchableOpacity>
 
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>

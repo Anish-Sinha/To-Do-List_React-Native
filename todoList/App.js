@@ -27,7 +27,7 @@ export default function App() {
     }
 
     {/* function to delete specific task */}
-    const completeTask = (index) => {
+    const deleteTask = (index) => {
         console.log("Deleting task(index): " + taskItems[index] 
             + " (" + index + ")");
 
@@ -58,7 +58,7 @@ export default function App() {
                 text: 'Delete',
                 onPress: () => {
                     console.log('Delete button pressed');
-                    completeTask(index)
+                    deleteTask(index)
                 },
             }
         ]);
