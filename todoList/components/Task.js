@@ -7,11 +7,16 @@ const Task = (props) => {
         <View style={styles.item}>
             <View style={styles.itemLeft}>
                 {/*<TouchableOpacity style={styles.square}></TouchableOpacity>*/}
-                <View style={styles.square}></View>
+                <View style={styles.square}>
+                   <Text style={styles.check}>✓</Text> 
+                </View>
+
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
 
-            <View style={styles.circular}></View>
+            <View style={styles.circular}>
+                <Text>🗑️</Text>
+            </View>
         </View>
     )
 }
@@ -34,22 +39,30 @@ const styles = StyleSheet.create({
     square: {
         width: 24, 
         height: 24,
-        backgroundColor: '#03DAC5',
-        opacity: 0.4,
+        backgroundColor: '#006969',
+        //opacity: 0.4,
 
         borderRadius: 5,
         marginRight: 15,
-    }, 
+
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+    check: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
     itemText: {
         color: 'white',
         maxWidth: '80%',
     }, 
     circular: {
-        width: 12,
-        height: 12, 
-        borderColor: 'white',
-        borderWidth: 2,
-        borderRadius: 5,
+        //width: 12,
+        //height: 12, 
+        //borderColor: 'white',
+        //borderWidth: 2,
+        //borderRadius: 5,
     }, 
 });
 
