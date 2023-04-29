@@ -14,6 +14,10 @@ const Task = (props) => {
         console.log("updated completion status: " + checkStatus);
     }
 
+    const deleteTriggered = () => {
+        props.deleteFunction(props.index);
+    }
+
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
@@ -27,9 +31,11 @@ const Task = (props) => {
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
 
-            <View style={styles.circular}>
-                <Text>🗑️</Text>
-            </View>
+            <TouchableOpacity onPress={() => deleteTriggered()}>
+                <View style={styles.circular}>
+                    <Text>🗑️</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     )
 }

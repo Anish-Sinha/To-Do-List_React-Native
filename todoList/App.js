@@ -64,6 +64,11 @@ export default function App() {
         ]);
     }
 
+    const callBackFunction = (data) => {
+        console.log("callBack function called with data: " + data);
+        longPress(data);
+    }
+
     return (
         <SafeAreaView style={styles.container}>
 
@@ -84,7 +89,9 @@ export default function App() {
                                     key={index} 
                                     onLongPress={() => longPress(index)}>
 
-                                    <Task key={index} text={item}/>
+                                    <Task key={index} text={item} 
+                                        index={index} 
+                                        deleteFunction={callBackFunction}/>
                                 </TouchableOpacity>
                             )
                         })
