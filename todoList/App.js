@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { 
-    StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity,
-    Keyboard
+    StyleSheet, View, ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, 
+    Keyboard, KeyboardAvoidingView
 } from 'react-native';
 import Task from './components/Task';
 
@@ -17,17 +17,20 @@ export default function App() {
     const [ taskItems, setTaskItems ] = useState([]);
 
     const handleAddTask = () => {
-        console.log(task);
+        console.log("Adding task: " + task);
 
         //...taskItems takes everything in taskItems array
         //then we create a new array where we append the new 'task' to the end
         setTaskItems( [...taskItems, task] );
         setTask(null)
-        Keyboard.dismiss();
+        //Keyboard.dismiss();
     }
 
     {/* function to delete specific task */}
     const completeTask = (index) => {
+        console.log("Deleting task(index): " + taskItems[index] 
+            + " (" + index + ")");
+
         //make local copy of taskItems[]
         let taskItemsCopy = [...taskItems];
 
@@ -40,10 +43,11 @@ export default function App() {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
 
             {/*Today's Tasks*/}
-            <View style={styles.tasksWrapper}>
+            <ScrollView style={styles.tasksWrapper}>
+            <View style={{paddingBottom: 120}}>
                 <Text style={styles.sectionTitle}>Today's Tasks</Text>
 
                 {/*Task Items*/}
@@ -63,15 +67,9 @@ export default function App() {
                             )
                         })
                     }
-
-                    {/*<Task text={'Task 1'}/>
-                    <Task text={'Task 2'}/>
-                    <Task text={'Task 3'}/>
-                    <Task text={'Task 4'}/>
-                    <Task text={'Task 5'}/>*/}
                 </View>
-
             </View>
+            </ScrollView>
 
             {/*Create new task*/}
             <KeyboardAvoidingView 
@@ -93,7 +91,7 @@ export default function App() {
         
             </KeyboardAvoidingView>
 
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -103,8 +101,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212',
     },
     tasksWrapper: {
-        paddingTop: 80,
+        //paddingTop: 80,
+        paddingTop: 40,
         paddingHorizontal: 20,
+        paddingBottom: 100,
     }, 
     sectionTitle: {
         color: 'white',
@@ -116,7 +116,9 @@ const styles = StyleSheet.create({
     },
     writeTaskWrapper: {
         position: 'absolute',
-        bottom: 60,
+        //bottom: 60,
+        bottom: 20,
+        height: 80,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
