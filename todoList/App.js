@@ -86,10 +86,10 @@ export default function App() {
                         taskItems.map((item, index) => {
                             return (
                                 <TouchableOpacity 
-                                    key={index} 
+                                    key={item} 
                                     onLongPress={() => longPress(index)}>
 
-                                    <Task key={index} text={item} 
+                                    <Task text={item} 
                                         index={index} 
                                         deleteFunction={callBackFunction}/>
                                 </TouchableOpacity>
